@@ -1,2 +1,2 @@
 # Agenda
- Projeto agenda simples com PHP.
+ Projeto agenda simples com PHP. Obs: projeto curso.
