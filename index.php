@@ -1,4 +1,40 @@
 <?php include_once('./templates/header.php') ?>
-    <h1>Agenda</h1>
-    <i class="fas fa-eye"></i>
-    <?php include_once('./templates/footer.php') ?>
+    <div class="container">
+        <?php 
+            if(isset($printMsg) && $printMsg != ''):?>
+<p id="msg"><?= $printMsg; ?></p>
+        <?php 
+            endif;        ?>
+            <h1 id="main-title">
+                Minha Agenda 
+            </h1>
+            <?php if(count($contacts) > 0): ?>
+                <table class="table" id="contacts-table">
+                    <thead class="thead table-dark" >
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($contacts as $contact): ?>
+                            <tr>
+                                <td scope="row"><?= $contact['id']; ?></td>
+                                <td scope="row"><?= $contact['name']; ?></td>
+                                <td scope="row"><?= $contact['phone']; ?></td>
+                                <td class="actions">
+                                    <a href="#"><i class="fas fa-eye check-icon"></i></a>
+                                    <a href="#"><i class="fas fa-edit edit-icon"></i></a>
+                                    <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php else: ?>
+                    <p id="empyt-list">Ainda não há contatos na sua agenda, <a href="<?php $BASE_URL; ?>create.php">criar contato</a> .</p>
+            <?php endif; ?>
+    </div>
+<?php include_once('./templates/footer.php') ?>
