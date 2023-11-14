@@ -49,3 +49,32 @@
     border: none;
     padding: 0;
 }
+#view-container{
+    max-width: 500px;
+    margin: 0 auto;
+}
+.bold{
+    font-weight: bold;
+}
+#main-title-show{
+    text-align: center;
+}
+#back-btn{
+    display: block;
+    width: 500px;
+    margin: 30px auto 0;
+}
+#back-btn a{
+    text-decoration: none;
+}
+#back-link{
+    border: 1px solid #0078ff;
+    color: #0078ff;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+#back-link:hover{
+    background-color:#0078ff;
+    color: #fff;
+    border: 1px solid #fff;
+}
