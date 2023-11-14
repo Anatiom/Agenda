@@ -78,3 +78,8 @@
     color: #fff;
     border: 1px solid #fff;
 }
+#create-form,
+#edit-form {
+    margin: 0 auto;
+    max-width: 500px;
+}
