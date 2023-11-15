@@ -26,7 +26,30 @@ if(!empty($data)){
         }
         header("Location:". $BASE_USL."../index.php");
     }
-}else{
+    else if($data['type'] === 'edit'){
+    $name = $data['name'];
+    $phone = $data['phone'];
+    $observations = $data['observations'];
+    $id = $data['id'];
+    $query = "UPDATE contacts SET name= :name, phone= :phone,
+     observations= :observations WHERE id=:id";
+    $stmp = $conn->prepare($query);
+    $stmp->bindParam(":id", $id);
+    $stmp->bindParam(":name", $name);
+    $stmp->bindParam(":phone", $phone);
+    $stmp->bindParam(":observations", $observations);
+    try{
+        $stmp->execute();
+        $_SESSION['msg'] = 'Contato aztualizado com sucesso!';
+      
+    }catch(PDOException $e){
+        $error = $e->getMessage();
+        echo "Error: $error";
+    }
+    header("Location:". $BASE_USL."../index.php");
+    }
+
+    }else{
     // Retorna um único contato 
     $id;
     if(!empty($_GET)){
