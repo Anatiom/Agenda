@@ -24,10 +24,14 @@
                                 <td scope="row"><?= $contact['id']; ?></td>
                                 <td scope="row"><?= $contact['name']; ?></td>
                                 <td scope="row"><?= $contact['phone']; ?></td>
-                                <td class="actions">
+                                <td class="actions" >
                                     <a href="<?php $BASE_URL; ?>show.php?id=<?= $contact['id']; ?>"><i class="fas fa-eye check-icon"></i></a>
                                     <a href="<?php $BASE_URL; ?>edit.php?id=<?= $contact['id']; ?>"><i class="fas fa-edit edit-icon"></i></a>
-                                    <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
+                                    <form class="delete-form" action="<?php $BASE_URL; ?>config/process.php" method="POST">
+                                        <input type="hidden" name="type" value="delete">
+                                        <input type="hidden" name="id" value="<?= $contact['id']; ?>">
+                                        <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

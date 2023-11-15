@@ -40,7 +40,7 @@ if(!empty($data)){
     $stmp->bindParam(":observations", $observations);
     try{
         $stmp->execute();
-        $_SESSION['msg'] = 'Contato aztualizado com sucesso!';
+        $_SESSION['msg'] = 'Contato atualizado com sucesso!';
       
     }catch(PDOException $e){
         $error = $e->getMessage();
@@ -48,7 +48,21 @@ if(!empty($data)){
     }
     header("Location:". $BASE_USL."../index.php");
     }
-
+    else if($data['type'] === 'delete'){
+        $id = $data['id'];
+        $query = "DELETE FROM contacts WHERE id = :id";
+        $stmp = $conn->prepare($query);
+        $stmp->bindParam(":id", $id);
+        try{
+            $stmp->execute();
+            $_SESSION['msg'] = 'Contato deletado com sucesso!';
+          
+        }catch(PDOException $e){
+            $error = $e->getMessage();
+            echo "Error: $error";
+        }
+        header("Location:". $BASE_USL."../index.php");
+    }
     }else{
     // Retorna um único contato 
     $id;
